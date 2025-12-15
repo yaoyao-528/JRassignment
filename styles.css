@@ -367,7 +367,7 @@ body {
     margin-bottom: 70px;
     color: #1a1a1a;
 }
-.feature-gird {
+.feature-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
@@ -409,10 +409,102 @@ body {
 
 /* Demo section */
 
+.demo-section h2 {
+    text-align: center;
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 70px;
+    color: #1a1a1a;
+
+}
+.demo-section {
+    padding: 80px 0;
+    background: white;
+
+}
+.demo-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+
+}
+.demo-steps {
+    display: flex;
+    align-items: center;
+
+}
+.demo-step {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 15px;
+
+}
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: #E8F2FF;
+    color: #4285F4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.step-content h4 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #666; 
+}
+.step-content p {
+    font-size: 13px;
+    color: #666
+}
+.demo-connector {
+    width: 30px;
+    height: 2px;
+    background: #E5E5E5;
+    margin: 0 10px;
+
+}
+.demo-chat {
+    background: #F9FAFB;
+    padding: 30px;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 16px;
+}
 
 
+.chat-message {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
 
+}
+.chat-avatar {
+    flex-shrink: 0;
+}
+.chat-bubble {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    max-width: 70%;
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.chat-message.user {
+    flex-direction: row-reverse;
+}
 
+/* Testimonials Section */
 
 
 
