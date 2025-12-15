@@ -360,6 +360,54 @@ body {
 
 /* feature */
 
+.features-section h2 {
+    text-align: center;
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 70px;
+    color: #1a1a1a;
+}
+.feature-gird {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: #F8F9FA;
+    padding: 50px 35px;
+    border-radius: 20px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+.feature-icon {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: start;
+    position: relative;
+
+}
+.feature-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #1a1a1a;
+}
+.feature-card p {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* Demo section */
 
 
 
