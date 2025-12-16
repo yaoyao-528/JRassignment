@@ -232,6 +232,15 @@ body {
     animation: float 3s ease-in-out infinite;
 }
 
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
 .btn-hero-primary {
     background: linear-gradient(135deg, #667EEA 0%, #4285F4 100%);
     color: white;
