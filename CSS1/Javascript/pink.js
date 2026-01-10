@@ -316,4 +316,40 @@ for (let i=0; i<students.length; i++) {
   console.log(students[i].name)
 }
 
+//内置对象
+
+console.log(Math.random()) //0-1之间的小数 随机的
+console.log(Math.floor(Math.random() *100) +1) //1-100整数
+console.log(Math.ceil(Math.random() *100)) //1-100整数
+console.log(Math.round(Math.random() *100)) //0-100整数
+console.log(Math.random()*(10+1)) //0-10之间的小数
+console.log(Math.floor(Math.random()*(10+1))) //0-10之间的整数
+
+let arr =['apple', 'banana', 'orange', 'grape']
+let randomIndex = Math.floor(Math.random() * arr.length)
+console.log(`i like ${arr[randomIndex]}`)
+
+Math.floor(Math.random()*6) +1 //1-6之间的整数 骰子
+
+Math.floor(Math.random()*6) +5 //5-10之间的整数
+
+Math.floor(Math.random()*(M-N+1)) + N //N-M之间的整数
+
+function getRandomInt(N, M) {
+  return Math.floor(Math.random() * (M - N + 1)) + N
+}
+console.log(getRandomInt(20,50)) //20-50之间的整数
+
+//随机点名练习
+let student = ['jeremy', 'lily', 'tom', 'lucy', 'jack', 'emma', 'mike']
+
+let randomStudent = student[Math.floor(Math.random() * student.length)]
+
+console.log(randomStudent)
+//splice () 删除数组元素-起始位置，删除几个元素
+student.splice(random,1) //删除被点到的学生
+console.log(student)
+
+
+//API const 优先用 const 
 
