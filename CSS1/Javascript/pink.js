@@ -509,9 +509,44 @@ box.addEventListener('click', function(event) {
 }) //点击盒子，获取鼠标坐标
 
 const input = document.querySelector('input')
-input.addEventListener('keydown', function(event) {
+input.addEventListener('keyup', function(event) {
   console.log(`Key pressed: ${event.key}`)
-  console.log(`Key code: ${event.code}`)
+  if (event.key === 'Enter') {
+    alert('You pressed Enter!')
+  }
 }) //按下键盘，获取按键值和按键代码 
 
+//环境对象 This, 每个函数里面都有 this 代表当前对象, 【谁调用， This就代表谁 】普通模式下-window
+const box = document.querySelector('.box')
+box.addEventListener('click', function() {
+  console.log(this) //this代表当前元素box
+  this.style.backgroundColor = 'yellow'
+}) //点击盒子，改变背景颜色
 
+//回调函数
+function fn() {
+  console.log('This is a callback function')
+}
+setInterval(fn, 1000) //每隔1秒执行一次
+
+
+box.addEventListener('click', function() {
+  console.log('also a callback function')
+}) //点击盒子，执行回调函数
+
+function fetchData(callback) {
+  setTimeout(function() {
+    const data = 'Sample Data'
+    callback(data)
+  }, 2000)
+}
+
+// tab slices example
+const as = document.querySelectorAll('.tab-nav a')
+for(let i=0; i<as.length; i++) {
+  as[i].addEventListener('mouseenter', function() {
+    document.querySelector('.tab-nav .active').classList.remove('active')//移除类， 我添加类
+    this.classList.add('active') //this 代表当前元素 as[i]
+  })
+
+}
