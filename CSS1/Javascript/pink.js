@@ -352,4 +352,166 @@ console.log(student)
 
 
 //API const 优先用 const 
+// DOM document object model, 操作html页面的内容
+
+//querySelector 通过css选择器选取元素, 只选第一个
+
+const box = document.querySelector('div')
+console.log(box)
+
+const nav = document.querySelector('#nav')
+console.log(nav)
+
+
+const li = document.querySelector('ul li:first-child')
+console.log(li)
+
+document.querySelectorAll() //选取所有符合条件的元素，返回一个数组
+const lis = document.querySelectorAll('ul li')
+console.log(lis[0])
+
+
+// 伪数组， Nodelist, 没有办法修改增加删除元素， 
+
+const lis = document.querySelectorAll('.nav li')
+console.log(lis)
+
+for (let i=0; i<lis.length; i++) {
+  console.log(lis[i])
+}//遍历伪数组 
+
+// 修改元素内容 innerHTML 1.获取元素内容 2.修改元素内容
+const box = document.querySelector('.box')
+console.log(box.innerText) //获取元素内容
+
+box.innerHTML = '<strong>Hello World</strong>' //修改元素内容, 不解析标签
+
+//innerHTML
+const box = document.querySelector('.box')
+console.log(box.innerHTML) //获取元素内容
+box.innerHTML = '<strong>Hello World</strong>' //修改元素内容, 解析标签
+
+
+//example
+const personArr = ['jeremy', 'lily', 'tom', 'lucy', 'jack', 'emma', 'mike']
+const random = Math.floor(Math.random() * personArr.length)
+console.log(personArr[random])
+const one = document.querySelector('#one')
+one.innerHTML = personArr[random]
+personArr.splice(random, 1)
+console.log(personArr)
+
+// 修改元素属性 setAttribute() getAttribute()
+const link = document.querySelector('#myLink')
+console.log(link.getAttribute('href')) //获取属性值
+link.setAttribute('href', 'https://www.baidu.com') //修改属性值
+link.setAttribute('target', '_blank') //添加属性值
+
+function getRandom(N, M) {
+  return Math.floor(Math.random() * (M - N + 1)) + N
+}
+const imag = document. querySelector('img')
+const random = getRandom(1,6)
+imag.src = `image/${random}.jpg`
+
+
+// 修改元素样式 （ 对象.style.样式属性）
+const box = document.querySelector('.box')
+box.style.width = '200px'
+box.style.height = '200px'
+box.style.backgroundColor = 'pink' //多组单词的采取小驼峰命名法
+box.style.border = '2px solid black'
+//通过类名修改样式 className
+const box = document.querySelector('.box')
+console.log(box.className) //获取类名
+box.className = 'active' //修改类名
+// 通过类名修改样式 classList- add（）不加点，是字符串
+const box = document.querySelector('.box')
+box.classList.add('active') //添加类名
+box.classList.remove('active') //删除类名
+box.classList.toggle('active') //切换类名，有就删除，没有就添加
+console.log(box.classList.contains('active')) //检查类名是否存在，返回true或false
+
+
+//定时器间歇函数 setInterval() clearInterval()
+let count =0
+const intervalId = setInterval(function() {
+  count++
+  console.log(`count is ${count}`)
+}, 1000) //每隔1秒执行一次
+
+
+function fn() {
+
+  console.log('This is an interval function')
+
+}
+
+
+let n = setInterval(fn, 2000) //每隔2秒执行一次 fn函数不加括号因为加括号是调用函数
+console.log(n) //返回一个定时器ID=2
+
+clearInterval(n) //停止定时器
+
+
+
+//定时器延时函数 setTimeout() clearTimeout()
+const timeoutId = setTimeout(function() {
+  alert('This is a delayed alert!')
+}, 3000) //3秒后执行一次
+
+
+//example
+const btn = document.querySelector('btn')
+console.log(btn.innerHTML)
+let i = 60
+btn.disabled = true
+let n = setInterval(function() {
+  i--
+  btn.innerHTML = `I have readed the agreement ${i} seconds`
+  if (i === 0) {
+    clearInterval(n)
+    btn.disabled = false
+    btn.innerHTML = 'I agree the agreement'
+  }
+}, 1000)
+
+
+
+
+// 添加事件监听 addEventListener 在编程时系统内发生的动作，比如用户在网页上单击一个按钮，移动鼠标，按下键盘等
+//element.addEventListener('事件类型', 事件处理函数)
+
+const btn = document.querySelector('button')
+btn.addEventListener('click', function() {
+  alert('Button Clicked!')
+}) //点击按钮弹出对话框
+
+const box = document.querySelector('.box')
+box.addEventListener('mouseover', function() {
+  box.style.backgroundColor = 'lightblue'
+})
+box.addEventListener('click', function() {
+  box.style.display = 'none'
+})
+
+
+//mouseenter, mouseleave, click, dblclick, contextmenu(右键菜单), mouseover, 
+// mouseout,focus , blur, keydown, keyup, keypress, change, input, submit
+//事件类型
+
+//event 对象
+const box = document.querySelector('.box')
+box.addEventListener('click', function(event) {
+  console.log(event)
+  console.log(`X coordinate: ${event.clientX}`)
+  console.log(`Y coordinate: ${event.clientY}`)
+}) //点击盒子，获取鼠标坐标
+
+const input = document.querySelector('input')
+input.addEventListener('keydown', function(event) {
+  console.log(`Key pressed: ${event.key}`)
+  console.log(`Key code: ${event.code}`)
+}) //按下键盘，获取按键值和按键代码 
+
 
