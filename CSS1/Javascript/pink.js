@@ -541,12 +541,129 @@ function fetchData(callback) {
   }, 2000)
 }
 
-// tab slices example
+// tab slices example tab 切片功能
 const as = document.querySelectorAll('.tab-nav a')
 for(let i=0; i<as.length; i++) {
   as[i].addEventListener('mouseenter', function() {
     document.querySelector('.tab-nav .active').classList.remove('active')//移除类， 我添加类
     this.classList.add('active') //this 代表当前元素 as[i]
-  })
 
+
+    document.querySelector('.tab-content .active').classList.remove('active')
+    document.querySelectorAll('.tab-content .item:nth-child (${i+1})').classList.add('active')
+  })
 }
+
+//事件流
+const box = document.querySelector('.box')
+const btn = document.querySelector('.box button')
+
+box.addEventListener('click', function() {
+  console.log('Box clicked')
+})
+
+btn.addEventListener('click', function(event) {
+  console.log('Button clicked')
+  event.stopPropagation() //阻止事件冒泡
+})
+
+//事件捕获， 事件冒泡
+const box = document.querySelector('.box')
+const btn = document.querySelector('.box button')
+
+box.addEventListener('click', function() {
+  console.log('Box clicked')
+}, true) //事件捕获阶段执行
+
+btn.addEventListener('click', function(event) {
+  console.log('Button clicked')
+}, true) //事件捕获阶段执行
+
+//事件冒泡 (所有父级元素的同名事件处理函数都会被依次触发， 从最内层元素开始触发，一直冒泡到最外层元素)
+const box = document.querySelector('.box')
+const btn = document.querySelector('.box button')
+
+box.addEventListener('click', function() {
+  console.log('Box clicked')
+}) //事件冒泡阶段执行
+
+btn.addEventListener('click', function(event) {
+  console.log('Button clicked')
+}) //事件冒泡阶段执行
+
+//事件委托
+const ul = document.querySelector('ul')
+ul.addEventListener('click', function(event) {
+  if (event.target.tagName === 'LI') {
+    console.log(`You clicked on item: ${event.target.innerText}`)
+  }
+}) //点击列表项，输出内容 
+//给ul添加事件监听，利用事件冒泡机制，判断点击目标是否为li
+
+//绑定事件
+btn.onclick = function() {
+  alert('Button clicked!')
+} //点击按钮弹出对话框
+//解绑事件
+btn.onclick = null //解绑事件
+
+const btn = document.querySelector('button')
+btn.onclick = function() {
+  alert('First handler')
+}
+btn.onclick = null //解绑第一个事件 
+btn.addEventListener('click', function() {
+  alert('Second handler')
+}) //添加第二个事件监听
+btn.removeEventListener('click', function() {
+  alert('Second handler')
+}) //无法解绑第二个事件监听，因为函数引用不同
+//正确解绑方法
+function secondHandler() {
+  alert('Second handler')
+}
+btn.addEventListener('click', secondHandler) //添加第二个事件监听
+btn.removeEventListener('click', secondHandler) //解绑第二个事件监听
+
+//事件委托 利用事件冒泡原理
+const ul = document.querySelector('ul')//获取ul元素父亲
+ul.addEventListener('click', function() {
+  alert('11')
+  this.style.color = 'red'
+  console.log(e.target) //获取点击的目标元素
+  e.target.style.color = 'blue' //改变点击目标元素颜色
+  if (e.target.tagName === 'LI') {
+    e.target.style.color = 'blue'
+  } //只点击li才输出内容
+
+}) //点击列表项，输出内容
+//给ul添加事件监听，利用事件冒泡机制，判断点击目标是否为li
+//tab切片功能
+
+const ul = document.querySelector('.tab-nav')
+ul.addEventListener('click', function(e) {
+  console.log(e.target) //获取点击的目标元素
+  console.log(e.target.tagName) //获取点击目标元素的标签名
+  if (e.target.tagName === 'A') {
+    console.log('a was selected')
+    document.querySelector('.tab-nav .active').classList.remove('active')//排他思想,移除原来的active类
+    e.target.classList.add('active')//this 指向ul,不能是this
+
+    const i = +e.target.dataset.id 
+    document.querySelector('.tab-content .active').classList.remove('active')
+    document.querySelector(`.tab-content .item:nth-child(${i + 1})`).classList.add('active') //注意反引号
+  }
+}
+
+//阻止默认行为
+const link = document.querySelector('a')
+link.addEventListener('click', function(e) {
+  e.preventDefault() //阻止默认行为
+  alert('Link clicked, but default behavior prevented!')
+}) //点击链接，弹出对话框但不跳转
+
+const form = document.querySelector('form')
+form.addEventListener('submit', function(e) {
+  e.preventDefault() //阻止默认行为
+  alert('Form submitted, but default behavior prevented!')
+}) //提交表单，弹出对话框但不提交
