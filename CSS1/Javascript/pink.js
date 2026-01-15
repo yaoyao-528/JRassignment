@@ -656,14 +656,85 @@ ul.addEventListener('click', function(e) {
 }
 
 //阻止默认行为
-const link = document.querySelector('a')
-link.addEventListener('click', function(e) {
-  e.preventDefault() //阻止默认行为
-  alert('Link clicked, but default behavior prevented!')
-}) //点击链接，弹出对话框但不跳转
-
 const form = document.querySelector('form')
 form.addEventListener('submit', function(e) {
   e.preventDefault() //阻止默认行为
   alert('Form submitted, but default behavior prevented!')
 }) //提交表单，弹出对话框但不提交
+
+const a = document.querySelector('a')
+a.addEventListener('click', function(e) {
+  e.preventDefault() //阻止默认行为
+}) //点击链接，输出信息但不跳转
+
+//页面加载-一些老代码喜欢你代码写在body前，这时候直接找dom元素会报错，因为dom还没加载完
+//所以要等页面加载完再执行代码
+window.addEventListener('load', function() {
+  const btn = document.querySelector('button')
+  btn.addEventListener('click', function() {
+    alert('Button clicked after page load!')
+  })
+}) //页面完全加载后执行
+Image.addEventListener('load', function() {
+  console.log('Image loaded successfully')
+}) //图片加载完成后执行
+
+window.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM fully loaded and parsed')
+}) //DOM内容加载完成后执行
+
+
+
+//页面滚动事件
+const div = document.querySelector('div')
+window.addEventListener('scroll', function() {
+  const n = document.documentElement.scrollTop
+  //console.log(document.documentElement.scrollTop)//获取html元素
+  if (n > = 100) {
+    div.style.display = 'block'
+  } else {
+    div.style.display = 'none'
+  }
+})
+
+const div = document.querySelector('div')
+  div.addEventListener('scroll', function() {
+
+    console.log(div.scrollTop)
+  }
+ )
+
+//滚动练习
+//获取元素
+const elevator = document.querySelector('.xtx-elevator')
+//1. 当页面滚动》300像素，就显示电梯elevator导航opicity =0
+//2.给页面添加滚动事件
+windown.addEventListener('scroll', funtion()) {
+   //被卷曲的头部》300
+   const n = document.documentElement.scrollTop
+  /*  if (n > = 300) {
+      elevator.style.opacity = 1
+    } else {
+      elevator.style.opacity = 0
+    }  */
+   elevator.style.opacity = n >= 300 ? 1:0 //简写
+
+}
+
+//点击返回页面顶部
+const backTop = document.querySelector('#backTop')
+backTop.addEventListener('click',function() {
+  document.documentElement.scrollTop = 0  //scrollTop 可读写
+
+})
+
+
+
+
+
+
+
+
+
+
+//页面尺寸事件
