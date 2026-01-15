@@ -177,8 +177,10 @@ if (contactForm) {
             }
             return;
         }
-       const serviceID = "your-server-id"
-        const templateID = "your-template-id"
+       
+       
+        const serviceID = "your-server-id"
+        const templateID = "your-template-id" // note: Emailjs.com 第三方的库
 
         emailjs.send(serviceID, templateID, templateParams).then((res) => { // call api, after 0.2 - 3s
             console.log("this email send success")
@@ -192,4 +194,4 @@ if (contactForm) {
 })
 }
 
-// note: Emailjs.com 第三方的库
+
