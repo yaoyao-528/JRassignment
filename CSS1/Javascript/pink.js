@@ -729,6 +729,122 @@ backTop.addEventListener('click',function() {
 })
 
 
+//DOM节点操作 元素节点（标签body, div, p, html）  属性节点（href,  id, class） 文本节点（text, 文字）
+
+//查找节点 父子关系，平级关系
+const baby = document.querySelector('.baby')
+console.log(baby)
+  console.log(baby.parentNode) //返回father ，最近一级
+  console.log(baby.parentNode.parentNode) //father's dad
+
+
+// childrenNodes ,获得孩子所有的东西，得到是伪数组， 选择的是亲儿子
+const ul = document.querySelector('ul')
+console.log(ul.children)  
+
+//获得兄弟 nextElementSibiling/previousElementSibiling
+const li2 = document.querySelector('ul li:nth-child(2)')
+console.log(li2.previousElementSibling) //上一个兄弟
+console.log(li2.nextElementSibling)//下一个兄弟
+
+
+//增删节点 document.createElement('标签名') 
+const div = document.createElement('div') //创建节点
+//追加节点 父元素.appendChild(要插入的元素) 插入到父元素的最后一个
+document.body.appendChild(div)
+
+const ul = document.querySelector('ul')
+const li = document.createElement('li')
+li.innerHTML = 'My name is alex'
+ul.appendChild(li)
+
+//插入父元素里其中一个子元素的前面 父元.insertBefore(要插入的元，在哪个元前面)
+
+const ul = document.querySelector('ul')
+const li = document.createElement('li')
+li.innerHTML = 'My name is alex'
+ul.insertBefore(li, ul.children[0])
+
+
+
+//学生信息表录入
+//1.点击模块
+const uname = document.querySelector('.uname')
+const age = document.querySelector('.age')
+const gender = document.querySelector('.gender')
+const salary = document.querySelector('.salary')
+const city = document.querySelector('.city')
+const tbody = document.querySelector('tbody')
+const items = document.querySelectorAll('[name]')
+//获取元素
+const arr = []  //2.生命一个空数组
+
+const info = document.querySelector('.info')
+info.addEventListener('submit',function(){
+  e.preventDefault() //阻止默认跳转
+  //这里进行表单验证validation, 如果不通过，中断了
+  for ( let i =0; i < items.length; i++) {
+    if (items[i].value === '')
+      return alert('输入内容不能为空')
+    
+  }
+
+
+  const obj = {
+    stuId: arr.length +1 ,
+    uname: uname.value ,
+    age: age.value ,
+    gender: gender.value ,
+    salary: salary.value ,
+    city: city.value 
+  }//3.创建一个新的对象，以对象的形式存入
+  console.log(obj)
+  //追加给数组
+  arr.push(obj)
+  console.log(arr)
+  this.reset()//清空表单info,reset inform
+  render()//调用渲染函数
+ 
+})
+
+ //4. 添加需要渲染，删除也需要渲染，封装函数 +遍历数组
+ function render() {
+    //先清空tbody
+    tbody.innerHTML = ''
+  for (let i = 0; i < arr.length; i++){
+    //生成tr
+    const tr = document.createElement('tr')
+    tr.innerHTML = `
+      <td>${arr[i].stuID}</td>
+      <td>${arr[i].uname}</td>
+      <td>${arr[i].age}</td>
+      <td>${arr[i].gender}</td>
+      <td>${arr[i].salary}</td>
+      <td>${arr[i].city}</td>
+      <td>
+        <a href='javascript:' data-id=${i}> Delete </a>
+      </td>
+    `
+    //追加元素  父元素.appendChild(子元素)
+    tbody.appendChild(tr)
+  }
+ }
+
+
+//5. 删除模块 事件委托
+tbody.addEventListener('click', function(e){
+  if(e.target.tagName === 'A') {
+    alert(111)
+    //自定义序号 data-id =0
+    console.log(e.target.dataset.id)
+    arr.splice(e.target.dataset.id, 1)
+    console.log(arr)
+    //重新渲染一次 
+    render()
+  }
+})
+
+//6. validation name属性 -遍历循环只要有一个是null，中断录入
 
 
 
@@ -737,4 +853,8 @@ backTop.addEventListener('click',function() {
 
 
 
-//页面尺寸事件
+
+
+
+
+
