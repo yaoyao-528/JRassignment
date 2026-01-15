@@ -157,15 +157,22 @@ const init = () => {
     console.log("this is working")
     emailjs.init({publicKey: 'your-public-key'})
 }
-init();
+init(); //call API
 
 const contactForm = document.querySelector('.contact-form')
 if (contactForm) {
   const validateField = contactForm.querySelectorAll('[name="fullname"], [name="email"],[name="message"],[name="terms"]')
   //遍历
+  
+  
+  const templateParams = {};
     validateField.forEach(field =>{
       field.addEventListener('blur', function(){
           Formvalidator.validateField(this);
+          if (field. type !=='checkbox') {
+            templateParams[field.name] = field.value
+          }
+          
 
       })
   })
