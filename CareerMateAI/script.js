@@ -153,6 +153,12 @@ const Formvalidator = {
 }
 
 
+const init = () => {
+    console.log("this is working")
+    emailjs.init({publicKey: 'your-public-key'})
+}
+init();
+
 const contactForm = document.querySelector('.contact-form')
 if (contactForm) {
   const validateField = contactForm.querySelectorAll('[name="fullname"], [name="email"],[name="message"],[name="terms"]')
