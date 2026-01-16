@@ -33,14 +33,14 @@ function getSum() {
 }
 getSum(2,3,4)
 
-//剩余参数, 是真数组 
+//剩余参数, 是真数组 rest
 function getSum(a,b, ...arr) {
 
 }
 getSum(2,3)
 getSum(1,2,3)
 
-//展开运算符,object, arry都能用, 展开数组,不会修改原数组，（求数组的最大值，合并数组）
+//展开运算符,object, arry都能用, 展开数组,不会修改原数组，（求数组的最大值，合并数组）spread
 const arr1 =[1,2,3]
 console.log(...arr)
 console.log(Math.max(1,2,3))
@@ -101,16 +101,75 @@ const [max, min] = getValue()
 console.log(max)
 cossole.log(min)
 
-//对象解构
+//对象解构 要求属性名必须和变量名一致
+const {uname, age} = {uname:'pink teacher', age: 18} //等价于 const uname = obj.uname
+console.log(uname)
+console.log(age)
+
+//对象解构更名
+const uname = 'red teacher'
+const {uname: username, age} = {uname:'pink teacher', age: 18}
+
+const pig =[
+  {
+    uname: 'peiqi'
+    age: 18
+  }
+]
+const [{uname, age}]=pig
 
 
-
-
-
-
+const pig = {
+  name: 'peiqi',
+  age: 6,
+  family: {
+    mother: 'momo',
+    father: 'fafa',
+    sister:'qiaozhi'
+  }
+}
+const {name, age, family:{mother, father, sister}}   = pig  //多级解构
 
 
 //例子
+//forEach()  加强版的for循环 遍历
+const arr = ['red', 'green', 'pink']
+arr.forEach(function(item, index) {
+  console.log(item)
+  console.log(index)
+}) //no result no return
+
+// 函数参数的解构
+function sum({a= ;b=0}) {
+  return a+b;
+}
+const result = sum({a:1, b:2});
+console.log(result);
+
+// 5 复杂的例子
+let userInfo ={
+  userName: 'dfdfsf',
+  age:18,
+  skills: [
+    'Java', 'js','ts'
+  ]
+  address: [ 
+    {
+    business: 'vic'
+    home: 'hoemhscoresey'
+    code: '3179'
+    },
+    {
+    business: 'gic'
+    home: 'hoemhghjsey'
+    code: '3171'
+    }
+]
+};
+
+let {userName, age,skills, address:[{home}]} = userInfo;
+console.log( address)
+
 
 
 
