@@ -21,14 +21,29 @@ If you are developing a production application, we recommend using TypeScript wi
   ```
   1. 把产品尽量拆分
   -APP
-    -title
-    -Panel switcher FY selector(button *3)
+    -Header
+    -FYSelector
+      -Button
+      -button
+      -button
     -tax rates table
-    -tax calcs card (form, input, button, result)
-    -disclaimer
+    -tax calcs card 
+      -Form
+       -Input
+       -Button
+      -Result
+    -Disclaimer
  质量-可读可复用
 
  代码质量
+ 如果一个compoenent都没有一个明确的名字的话， 那么这个component就不该存在
+
+ 2. Single responsiblity
+ 一个组件一个责任
+
+ 3. 使用react 构建一个静态版本
+
+ 
 
 
 

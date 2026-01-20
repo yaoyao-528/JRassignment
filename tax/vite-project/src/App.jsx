@@ -1,7 +1,6 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+import Header from './app/FinancialYearSelect/FinancialYearSelect.jsx';
+
 //一个返回一段jsx的方法，=component
 //jsx =javascript 里面写html 语法的特性
 //component 可以被另一个component 调用， import export <组件名/>
