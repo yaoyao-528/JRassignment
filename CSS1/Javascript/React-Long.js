@@ -130,7 +130,16 @@ HTML JS CSS React本质上还是， 但是我们不能接受命令式编程
 前端程序员要学会用声明式编程思维去写代码
 junior React dev or Senior React dev 并不是skill差距,而是思维方式差距
 
+/* 选择一个工具来搭建react 环境， JS 本身是一个语音 +HTML + CSS =》需要声明式编程
+React 颠覆你的思维方式的， 把它分成一个个组件， 然后你需要把这些组件链接在一起
+component
 */
+
+// react + next.js/vite 
+// 培训, 我们这个项目依赖于这些东西，版本
+<script src=''>
+
+即使不知道写的啥代码，连蒙带猜，代码质量的重要性
 
 
 
